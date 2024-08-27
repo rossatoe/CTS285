@@ -44,7 +44,7 @@ def SubsFunct():
   ext = False
   rpt = ""
   while ext == False:
-    print("You chose Addition")
+    print("You chose Substraction")
     while True:
       num1Str = input("\nEnter a number: ")
       if VerifyIntFunc(num1Str):
@@ -75,7 +75,7 @@ def DivFunct():
   ext = False
   rpt = ""
   while ext == False:
-    print("You chose Addition")
+    print("You chose Division")
     while True:
       num1Str = input("\nEnter a number: ")
       if VerifyIntFunc(num1Str):
@@ -106,7 +106,7 @@ def MultFunct():
   ext = False
   rpt = ""
   while ext == False:
-    print("You chose Addition")
+    print("You chose Multiplication")
     while True:
       num1Str = input("\nEnter a number: ")
       if VerifyIntFunc(num1Str):
