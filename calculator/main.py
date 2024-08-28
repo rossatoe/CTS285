@@ -1,4 +1,4 @@
-from calculator.M1HWfunctions_rossatoe import *
+from M1HWfunctions_rossatoe import *
 
 def Menu():
   opt = 0
