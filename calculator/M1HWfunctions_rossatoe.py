@@ -1,6 +1,6 @@
 def VerifyIntFunc(input):
   try:
-    int(input)
+    float(input)
     return True
   except ValueError:
     return False
@@ -27,14 +27,14 @@ def AddFunct():
     while True:
       num1Str = input("\nEnter a number: ")
       if VerifyIntFunc(num1Str):
-        num1 = int(num1Str)
+        num1 = float(num1Str)
         break
       else:
         print("\nInvalid input. Please enter an integer.")
     while True:
       num2Str = input("\nEnter another number: ")
       if VerifyIntFunc(num2Str):
-        num2 = int(num2Str)
+        num2 = float(num2Str)
         break
       else:
         print("Invalid input. Please enter an integer.")
