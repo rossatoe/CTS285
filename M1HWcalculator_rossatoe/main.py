@@ -4,11 +4,11 @@ def mainFunct():
     mathList = ["Add", "Subtract", "Divide", "Multiply",
                 "+", "-", "/", "x"]
     opt = 1
-    rpt = 1
     while opt != 5:
         menuFunct()
         opt = verifyOptFunct(input("Select an option: "))
         if 1 <= opt <= 4:
+            rpt = 1
             while rpt != 2:
                 print("\n", mathList[opt-1])
                 num1 = verifyFltFunct(input("Enter the first value: "))
