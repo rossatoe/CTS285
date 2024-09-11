@@ -1,4 +1,4 @@
-Set up virtual environment
+Set up virtual environment:
 - virtualenv venv
 - source venv/bin/activate
 - deactivate
