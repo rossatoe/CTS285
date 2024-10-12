@@ -4,9 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-color: #001f3f; /* Dark blue */
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .taskbar {
+            margin: 20px auto;
+            padding: 10px;
+            width: 100%;
+            background-color: #b3cde0; /* Soft light-blue */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .taskbar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .taskbar ul li {
+            margin: 0 20px;
+        }
+        .taskbar ul li a {
+            text-decoration: none;
+            color: #001f3f; /* Match the background blue */
+            font-size: 18px;
+        }
+        .taskbar ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <h1>Feedback</h1>
+    <div class="taskbar">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/answer_checker">Answer Checker</a></li>
+                <li><a href="/memory_bank">Memory Bank</a></li>
+            </ul>
+        </nav>
+    </div>
     <form method="post">
         <textarea name="feedback" placeholder="Enter your suggestions and feedback"></textarea>
         <br>
