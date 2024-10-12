@@ -22,6 +22,7 @@ def answer_checker():
             equation, user_answer = user_input.split('=')
             correct_answer = eval(equation)
             is_correct = str(correct_answer) == user_answer.strip()
+            result = f"The correct answer is {correct_answer}."
         except Exception as e:
             result = 'Error: ' + str(e)
             is_correct = False
