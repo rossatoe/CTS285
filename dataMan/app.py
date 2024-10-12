@@ -14,20 +14,20 @@ def home():
 
 @app.route('/answer_checker', methods=['GET', 'POST'])
 def answer_checker():
-    result = None
-    is_correct = None
+    result = ""
     if request.method == 'POST':
         try:
             user_input = request.form['equation']
             equation, user_answer = user_input.split('=')
             correct_answer = eval(equation)
-            is_correct = str(correct_answer) == user_answer.strip()
-            result = f"The correct answer is {correct_answer}."
+            if str(correct_answer) == user_answer.strip():
+                result = f"Correct! The answer is {correct_answer}"
+            else:
+                result = f"Incorrect! The answer is {correct_answer}"
         except Exception as e:
             result = 'Error: ' + str(e)
-            is_correct = False
 
-    return render_template('answer_checker.html', result=result, is_correct=is_correct)
+    return render_template('answer_checker.html', result=result)
 
 @app.route('/memory_bank', methods=['GET', 'POST'])
 def memory_bank():

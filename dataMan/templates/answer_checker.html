@@ -80,7 +80,7 @@
     </div>
     <div class="calculator">
         <form method="post">
-            <input type="text" id="display" name="equation" placeholder="Enter equation and answer (e.g. 1+1=2)" required>
+            <input type="text" id="display" name="equation" placeholder="Enter equation and answer (e.g. 1+1=2)" required value="{{ result }}">
             <br>
             <button type="button" onclick="addToDisplay('1')">1</button>
             <button type="button" onclick="addToDisplay('2')">2</button>
@@ -105,14 +105,6 @@
             <button type="button" onclick="clearDisplay()">C</button>
             <button type="submit">Enter</button>
         </form>
-        {% if result is not none %}
-          <h2>Result: {{ result }}</h2>
-          {% if is_correct %}
-            <p>Correct!</p>
-          {% else %}
-            <p>Incorrect. Try again.</p>
-          {% endif %}
-        {% endif %}
     </div>
     <script>
         function addToDisplay(value) {
