@@ -12,9 +12,22 @@ def get_db_connection():
 def home():
     return render_template('index.html')
 
-@app.route('/answer_checker')
+@app.route('/answer_checker', methods=['GET', 'POST'])
 def answer_checker():
-    return render_template('answer_checker.html')
+    result = None
+    is_correct = None
+    if request.method == 'POST':
+        try:
+            equation = request.form['equation']
+            user_answer = eval(equation)  # Be careful with eval in production code, consider a safer alternative
+            result = eval(equation)
+
+            is_correct = result == user_answer
+        except Exception as e:
+            result = 'Error: ' + str(e)
+            is_correct = False
+
+    return render_template('answer_checker.html', result=result, is_correct=is_correct)
 
 @app.route('/memory_bank', methods=['GET', 'POST'])
 def memory_bank():
