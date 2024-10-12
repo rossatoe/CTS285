@@ -1,15 +1,18 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <h1>{% block title %} Welcome to FlaskBlog {% endblock %}</h1>
-    {% for post in posts %}
-        <a href="{{ url_for('post', post_id=post['id']) }}">
-            <h2>{{ post['title'] }}</h2>
-        </a>
-        <span class="badge badge-primary">{{ post['created'] }}</span>
-        <a href="{{ url_for('edit', id=post['id']) }}"></a>
-            <span class="badge badge-warning">Edit</span>
-        </a>
-        <hr>
-    {% endfor %}
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataMan Slim</title>
+</head>
+<body>
+    <h1>Welcome to DataMan Slim!</h1>
+    <nav>
+        <ul>
+            <li><a href="/answer_checker">Answer Checker</a></li>
+            <li><a href="/memory_bank">Memory Bank</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
