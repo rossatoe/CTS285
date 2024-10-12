@@ -99,10 +99,11 @@
             <br>
             <button type="button" onclick="addToDisplay('0')">0</button>
             <button type="button" onclick="addToDisplay('.')">.</button>
-            <button type="submit">Enter</button>
+            <button type="button" onclick="addToDisplay('=')">=</button> <!-- Restoring the "=" button -->
             <button type="button" onclick="addToDisplay('/')">/</button>
             <br>
             <button type="button" onclick="clearDisplay()">C</button>
+            <button type="submit">Enter</button>
         </form>
         {% if result is not none %}
           <h2>Result: {{ result }}</h2>
