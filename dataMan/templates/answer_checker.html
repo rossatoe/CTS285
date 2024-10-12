@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer Checker</title>
+</head>
+<body>
+    <h1>Answer Checker</h1>
+    <form>
+        <!-- A basic calculator UI -->
+        <input type="text" id="display" disabled>
+        <br>
+        <button type="button" onclick="addToDisplay('1')">1</button>
+        <button type="button" onclick="addToDisplay('2')">2</button>
+        <button type="button" onclick="addToDisplay('3')">3</button>
+        <button type="button" onclick="calculate()">=</button>
+        <br>
+        <!-- Add more buttons for a complete calculator -->
+    </form>
+    <script>
+        function addToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+        function calculate() {
+            // This will be implemented later with Python functions
+            alert('Calculation will be implemented later');
+        }
+    </script>
+</body>
+</html>
