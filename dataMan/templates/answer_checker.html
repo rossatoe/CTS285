@@ -80,8 +80,7 @@
     </div>
     <div class="calculator">
         <form method="post">
-            <input type="text" id="display" name="equation" placeholder="Enter equation (e.g. 1+1)" required>
-            <input type="text" id="user-answer" name="user_answer" placeholder="Enter your answer" required>
+            <input type="text" id="display" name="equation" placeholder="Enter equation and answer (e.g. 1+1=2)" required>
             <br>
             <button type="button" onclick="addToDisplay('1')">1</button>
             <button type="button" onclick="addToDisplay('2')">2</button>
@@ -100,7 +99,7 @@
             <br>
             <button type="button" onclick="addToDisplay('0')">0</button>
             <button type="button" onclick="addToDisplay('.')">.</button>
-            <button type="submit">=</button>
+            <button type="submit">Enter</button>
             <button type="button" onclick="addToDisplay('/')">/</button>
             <br>
             <button type="button" onclick="clearDisplay()">C</button>

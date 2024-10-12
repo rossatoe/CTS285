@@ -18,10 +18,10 @@ def answer_checker():
     is_correct = None
     if request.method == 'POST':
         try:
-            equation = request.form['equation']
-            user_answer = request.form['user_answer']
+            user_input = request.form['equation']
+            equation, user_answer = user_input.split('=')
             correct_answer = eval(equation)
-            is_correct = str(correct_answer) == user_answer
+            is_correct = str(correct_answer) == user_answer.strip()
         except Exception as e:
             result = 'Error: ' + str(e)
             is_correct = False
@@ -51,4 +51,4 @@ def feedback():
     return render_template('feedback.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
