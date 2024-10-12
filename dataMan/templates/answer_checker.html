@@ -43,26 +43,25 @@
         .taskbar ul li a:hover {
             text-decoration: underline;
         }
-        .calculator {
+        .answer-checker {
             width: 300px;
             margin: 50px auto;
             padding: 20px;
             background-color: #b3cde0; /* Soft light-blue */
             border-radius: 10px;
         }
-        .calculator input[type="text"] {
+        .answer-checker input[type="text"] {
             width: 100%;
             height: 40px;
-            text-align: right;
             margin-bottom: 10px;
-            padding-right: 10px;
+            padding: 5px;
             font-size: 18px;
         }
-        .calculator button {
-            width: 60px;
+        .answer-checker button {
+            width: 100%;
             height: 40px;
             font-size: 18px;
-            margin: 5px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -78,46 +77,19 @@
             </ul>
         </nav>
     </div>
-    <div class="calculator">
-        <input type="text" id="display" disabled>
-        <br>
-        <button type="button" onclick="addToDisplay('1')">1</button>
-        <button type="button" onclick="addToDisplay('2')">2</button>
-        <button type="button" onclick="addToDisplay('3')">3</button>
-        <button type="button" onclick="addToDisplay('+')">+</button>
-        <br>
-        <button type="button" onclick="addToDisplay('4')">4</button>
-        <button type="button" onclick="addToDisplay('5')">5</button>
-        <button type="button" onclick="addToDisplay('6')">6</button>
-        <button type="button" onclick="addToDisplay('-')">-</button>
-        <br>
-        <button type="button" onclick="addToDisplay('7')">7</button>
-        <button type="button" onclick="addToDisplay('8')">8</button>
-        <button type="button" onclick="addToDisplay('9')">9</button>
-        <button type="button" onclick="addToDisplay('*')">*</button>
-        <br>
-        <button type="button" onclick="addToDisplay('0')">0</button>
-        <button type="button" onclick="addToDisplay('.')">.</button>
-        <button type="button" onclick="calculate()">=</button>
-        <button type="button" onclick="addToDisplay('/')">/</button>
-        <br>
-        <button type="button" onclick="clearDisplay()">C</button>
+    <div class="answer-checker">
+        <form method="post">
+            <input type="text" name="user_answer" placeholder="Enter your answer" required>
+            <button type="submit">Check Answer</button>
+        </form>
+        {% if result is not none %}
+          <h2>Result: {{ result }}</h2>
+          {% if is_correct %}
+            <p>Correct!</p>
+          {% else %}
+            <p>Incorrect. Try again.</p>
+          {% endif %}
+        {% endif %}
     </div>
-    <script>
-        function addToDisplay(value) {
-            document.getElementById('display').value += value;
-        }
-        function clearDisplay() {
-            document.getElementById('display').value = '';
-        }
-        function calculate() {
-            try {
-                let display = document.getElementById('display');
-                display.value = eval(display.value);
-            } catch (e) {
-                alert('Error: Invalid calculation');
-            }
-        }
-    </script>
 </body>
 </html>
