@@ -19,10 +19,9 @@ def answer_checker():
     if request.method == 'POST':
         try:
             equation = request.form['equation']
-            user_answer = eval(equation)  # Be careful with eval in production code, consider a safer alternative
-            result = eval(equation)
-
-            is_correct = result == user_answer
+            user_answer = request.form['user_answer']
+            correct_answer = eval(equation)
+            is_correct = str(correct_answer) == user_answer
         except Exception as e:
             result = 'Error: ' + str(e)
             is_correct = False
