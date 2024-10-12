@@ -15,33 +15,44 @@
             text-align: center;
             margin-top: 50px;
         }
-        nav ul {
+        .taskbar {
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+            border: 2px solid #00aced;
+            border-radius: 10px;
+            display: inline-block;
+            background-color: #003366; /* Slightly lighter blue for contrast */
+        }
+        .taskbar ul {
             list-style-type: none;
             padding: 0;
-            text-align: center;
+            margin: 0;
         }
-        nav ul li {
+        .taskbar ul li {
             display: inline;
             margin-right: 20px;
         }
-        nav ul li a {
+        .taskbar ul li a {
             text-decoration: none;
             color: #00aced;
             font-size: 18px;
         }
-        nav ul li a:hover {
+        .taskbar ul li a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <h1>Welcome to DataMan Slim!</h1>
-    <nav>
-        <ul>
-            <li><a href="/answer_checker">Answer Checker</a></li>
-            <li><a href="/memory_bank">Memory Bank</a></li>
-            <li><a href="/feedback">Feedback</a></li>
-        </ul>
-    </nav>
+    <div class="taskbar">
+        <nav>
+            <ul>
+                <li><a href="/answer_checker">Answer Checker</a></li>
+                <li><a href="/memory_bank">Memory Bank</a></li>
+                <li><a href="/feedback">Feedback</a></li>
+            </ul>
+        </nav>
+    </div>
 </body>
 </html>
