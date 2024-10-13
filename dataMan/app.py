@@ -20,6 +20,8 @@ def answer_checker():
             user_input = request.form['equation']
             equation, user_answer = user_input.split('=')
             correct_answer = eval(equation)
+            if correct_answer == int(correct_answer):
+                correct_answer = int(correct_answer)
             if str(correct_answer) == user_answer.strip():
                 result = f"Correct! The answer is {correct_answer}"
             else:
