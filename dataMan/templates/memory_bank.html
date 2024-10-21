@@ -109,30 +109,31 @@
         </form>
     </div>
     <script>
-        let memory = JSON.parse('{{ equations | tojson | safe }}');
+        let memory = JSON.parse('{{ equations | tojson | safe }}').map(equation => equation.equation);
         let currentIndex = memory.length - 1;
-
+    
         function addToDisplay(value) {
             document.getElementById('display').value += value;
         }
-
+    
         function previousEquation() {
             if (currentIndex > 0) {
                 currentIndex--;
                 document.getElementById('display').value = memory[currentIndex];
             }
         }
-
+    
         function nextEquation() {
             if (currentIndex < memory.length - 1) {
                 currentIndex++;
                 document.getElementById('display').value = memory[currentIndex];
             }
         }
-
+    
         function clearDisplay() {
             document.getElementById('display').value = '';
         }
     </script>
+    
 </body>
 </html>
