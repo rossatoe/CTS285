@@ -80,11 +80,29 @@
     </div>
     <div class="calculator">
         <form method="post">
-            <input type="text" id="display" name="equation" placeholder="Enter number to store in memory" required>
+            <input type="text" id="display" name="equation" placeholder="Enter your equation" required>
             <br>
             <button type="button" onclick="addToDisplay('1')">1</button>
             <button type="button" onclick="addToDisplay('2')">2</button>
             <button type="button" onclick="addToDisplay('3')">3</button>
+            <button type="button" onclick="addToDisplay('+')">+</button>
+            <br>
+            <button type="button" onclick="addToDisplay('4')">4</button>
+            <button type="button" onclick="addToDisplay('5')">5</button>
+            <button type="button" onclick="addToDisplay('6')">6</button>
+            <button type="button" onclick="addToDisplay('-')">-</button>
+            <br>
+            <button type="button" onclick="addToDisplay('7')">7</button>
+            <button type="button" onclick="addToDisplay('8')">8</button>
+            <button type="button" onclick="addToDisplay('9')">9</button>
+            <button type="button" onclick="addToDisplay('*')">*</button>
+            <br>
+            <button type="button" onclick="addToDisplay('0')">0</button>
+            <button type="button" onclick="addToDisplay('.')">.</button>
+            <button type="button" onclick="addToDisplay('/')">/</button>
+            <button type="button" onclick="addToDisplay('=')">=</button>
+            <br>
+            <button type="button" onclick="clearDisplay()">C</button>
             <button type="button" onclick="storeMemory()">M+</button>
             <button type="button" onclick="recallMemory()">MR</button>
             <button type="button" onclick="clearMemory()">MC</button>
@@ -100,16 +118,20 @@
         }
 
         function storeMemory() {
-            memory = parseFloat(document.getElementById('display').value);
+            memory = document.getElementById('display').value;
             document.getElementById('display').value = '';
         }
 
         function recallMemory() {
-            document.getElementById('display').value = memory;
+            document.getElementById('display').value += memory;
         }
 
         function clearMemory() {
-            memory = 0;
+            memory = '';
+            document.getElementById('display').value = '';
+        }
+
+        function clearDisplay() {
             document.getElementById('display').value = '';
         }
     </script>
