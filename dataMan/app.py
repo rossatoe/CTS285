@@ -22,9 +22,9 @@ def home():
 @app.route('/answer_checker', methods=['GET', 'POST'])
 def answer_checker():
     result = ""
-    if request.method == 'POST':
+    if request.method == 'POST' or 'equation' in request.args:
         try:
-            user_input = request.form['equation']
+            user_input = request.args.get('equation') if request.args.get('equation') else request.form['equation']
             equation, user_answer = user_input.split('=')
             correct_answer = eval(equation)
             if correct_answer == int(correct_answer):

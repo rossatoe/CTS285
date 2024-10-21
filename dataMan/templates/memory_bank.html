@@ -105,35 +105,41 @@
             <button type="button" onclick="previousEquation()">⬆️</button>
             <button type="button" onclick="nextEquation()">⬇️</button>
             <br>
-            <button type="submit">Enter</button>
+            <button type="button" onclick="checkAnswer()">ENTER</button>
         </form>
     </div>
     <script>
         let memory = JSON.parse('{{ equations | tojson | safe }}').map(equation => equation.equation);
         let currentIndex = memory.length - 1;
-    
+
         function addToDisplay(value) {
             document.getElementById('display').value += value;
         }
-    
+
         function previousEquation() {
             if (currentIndex > 0) {
                 currentIndex--;
-                document.getElementById('display').value = memory[currentIndex];
+                document.getElementById('display').value = memory[currentIndex] + '=';
             }
         }
-    
+
         function nextEquation() {
             if (currentIndex < memory.length - 1) {
                 currentIndex++;
-                document.getElementById('display').value = memory[currentIndex];
+                document.getElementById('display').value = memory[currentIndex] + '=';
             }
         }
-    
+
         function clearDisplay() {
             document.getElementById('display').value = '';
         }
+
+        function checkAnswer() {
+            let equation = document.getElementById('display').value;
+            if (equation.includes('=')) {
+                window.location.href = '/answer_checker?equation=' + encodeURIComponent(equation);
+            }
+        }
     </script>
-    
 </body>
 </html>
