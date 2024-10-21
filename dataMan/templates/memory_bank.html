@@ -109,7 +109,7 @@
         </form>
     </div>
     <script>
-        let memory = {{ equations|safe }};
+        let memory = JSON.parse('{{ equations | tojson | safe }}');
         let currentIndex = memory.length - 1;
 
         function addToDisplay(value) {
