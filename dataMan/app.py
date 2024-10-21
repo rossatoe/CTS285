@@ -8,6 +8,13 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
+def query_db(query, args=(), one=False):
+    conn = get_db_connection()
+    cur = conn.execute(query, args)
+    rv = [dict(row) for row in cur.fetchall()]
+    conn.close()
+    return (rv[0] if rv else None) if one else rv
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -46,9 +53,7 @@ def memory_bank():
             conn.close()
         return redirect(url_for('memory_bank'))
     
-    conn = get_db_connection()
-    equations = conn.execute('SELECT * FROM equations').fetchall()
-    conn.close()
+    equations = query_db('SELECT * FROM equations')
     return render_template('memory_bank.html', equations=equations)
 
 @app.route('/feedback', methods=['GET', 'POST'])
