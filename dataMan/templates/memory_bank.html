@@ -99,36 +99,35 @@
             <br>
             <button type="button" onclick="addToDisplay('0')">0</button>
             <button type="button" onclick="addToDisplay('.')">.</button>
-            <button type="button" onclick="addToDisplay('/')">/</button>
-            <button type="button" onclick="addToDisplay('=')">=</button>
-            <br>
             <button type="button" onclick="clearDisplay()">C</button>
-            <button type="button" onclick="storeMemory()">M+</button>
-            <button type="button" onclick="recallMemory()">MR</button>
-            <button type="button" onclick="clearMemory()">MC</button>
+            <button type="submit" name="save">SAVE</button>
+            <button type="submit" name="remove">RMV</button>
+            <button type="button" onclick="previousEquation()">⬆️</button>
+            <button type="button" onclick="nextEquation()">⬇️</button>
             <br>
             <button type="submit">Enter</button>
         </form>
     </div>
     <script>
-        let memory = 0;
+        let memory = {{ equations|safe }};
+        let currentIndex = memory.length - 1;
 
         function addToDisplay(value) {
             document.getElementById('display').value += value;
         }
 
-        function storeMemory() {
-            memory = document.getElementById('display').value;
-            document.getElementById('display').value = '';
+        function previousEquation() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                document.getElementById('display').value = memory[currentIndex];
+            }
         }
 
-        function recallMemory() {
-            document.getElementById('display').value += memory;
-        }
-
-        function clearMemory() {
-            memory = '';
-            document.getElementById('display').value = '';
+        function nextEquation() {
+            if (currentIndex < memory.length - 1) {
+                currentIndex++;
+                document.getElementById('display').value = memory[currentIndex];
+            }
         }
 
         function clearDisplay() {

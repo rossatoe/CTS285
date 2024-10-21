@@ -28,19 +28,28 @@ def answer_checker():
                 result = f"Incorrect! The answer is {correct_answer}"
         except Exception as e:
             result = 'Error: ' + str(e)
-
     return render_template('answer_checker.html', result=result)
 
 @app.route('/memory_bank', methods=['GET', 'POST'])
 def memory_bank():
     if request.method == 'POST':
         equation = request.form['equation']
-        conn = get_db_connection()
-        conn.execute('INSERT INTO equations (equation) VALUES (?)', (equation,))
-        conn.commit()
-        conn.close()
+        if 'save' in request.form:
+            conn = get_db_connection()
+            conn.execute('INSERT INTO equations (equation) VALUES (?)', (equation,))
+            conn.commit()
+            conn.close()
+        elif 'remove' in request.form:
+            conn = get_db_connection()
+            conn.execute('DELETE FROM equations WHERE equation = ?', (equation,))
+            conn.commit()
+            conn.close()
         return redirect(url_for('memory_bank'))
-    return render_template('memory_bank.html')
+    
+    conn = get_db_connection()
+    equations = conn.execute('SELECT * FROM equations').fetchall()
+    conn.close()
+    return render_template('memory_bank.html', equations=equations)
 
 @app.route('/feedback', methods=['GET', 'POST'])
 def feedback():
