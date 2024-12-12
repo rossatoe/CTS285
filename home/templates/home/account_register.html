@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Registration</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #977552;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: url("/static/images/register_boxImg.png");
+            background-size: cover;
+            position: relative;
+        }
+
+        .form-content {
+            background-color: rgba(255, 255, 255, 0.7); /* White background with slight transparency */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .password-error {
+            color: red;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+            button:focus {
+                outline: none;
+                box-shadow: none; /* Remove focus highlight */
+            }
+
+        .messages {
+            color: #ff9800;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-content">
+                <h2>Account Registration</h2>
+
+                <form method="post" id="registration-form">
+                    {% csrf_token %}
+
+                    <!-- Username -->
+                    <div>
+                        {{ form.username.label_tag }} {{ form.username }}
+                        {% if form.username.errors %}
+                        <div class="error">
+                            {% for error in form.username.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        {{ form.email.label_tag }} {{ form.email }}
+                        {% if form.email.errors %}
+                        <div class="error">
+                            {% for error in form.email.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        {{ form.password.label_tag }} {{ form.password }}
+                        {% if form.password.errors %}
+                        <div class="error">
+                            {% for error in form.password.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div>
+                        {{ form.confirm_password.label_tag }} {{ form.confirm_password }}
+                        {% if form.confirm_password.errors %}
+                        <div class="error">
+                            {% for error in form.confirm_password.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit">Confirm</button>
+
+                </form>
+
+                <p>Already have an account? <a href="{% url 'account_login' %}">Login here</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

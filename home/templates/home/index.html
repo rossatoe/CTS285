@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameWebsite</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+    <!-- Taskbar -->
+    <header class="taskbar">
+        <!-- Left: Logo Placeholder -->
+        <div class="logo">
+            <span>LOGO</span>
+        </div>
+
+        <!-- Center: Navigation Links -->
+        <nav class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="#">Games</a>
+            <a href="#">News</a>
+            <a href="#">Forum</a>
+            <a href="#">Shop</a>
+            <a href="#">Events</a>
+            <a href="#">Support</a>
+        </nav>
+
+        <!-- Right: Account Section Placeholder -->
+        <div class="account">
+            <div class="account-image">
+                {% if user.profile_picture %}
+                <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+                {% else %}
+                <img src="{{ MEDIA_URL }}/media/profile_pics/default_profile_picture.jpg" alt="Profile Picture">
+                {% endif %}
+            </div>
+            {% if user.is_authenticated %}
+            <a href="{% url 'account_profile' %}">{{ user.username }}</a>
+            {% else %}
+            <a href="{% url 'account_login' %}">ACCOUNT</a>
+            {% endif %}
+        </div>
+
+    </header>
+
+
+    <!-- Content Container (Rectangle under Taskbar) -->
+    <div class="content-container">
+        <h1>New Pokemon will arrive in the next Patch!</h1>
+        <p>Please log in or get register in the website to get notifications about the last news on our new criature arriving to our game world! The adventure waits for you.</p>
+        <p>Fake annoucements just to get the idea.</p>
+        <p>
+            Every picture and logo space would be change for an actual logo about the name I create and
+            change the pictures with arts about the games I produce.
+        </p>
+        <p>Links on the taskbar are also empty, it just to get the idea of multiple pages.</p>
+        <p>All the work is on the account pages, please check the verification, rergister and edit pages</p>
+
+    </div>
+</body>
+</html>

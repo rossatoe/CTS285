@@ -1,0 +1,145 @@
+/* Taskbar Style */
+.taskbar {
+    position: fixed; /* Keep the taskbar fixed at the top */
+    top: 0; /* Align the taskbar at the top of the viewport */
+    left: 0; /* Align the taskbar to the left */
+    right: 0;
+    /*width: 100%; /* Make the taskbar take up the full width */ /*This shit broke my task bar, don't touch it*/
+
+    background-color: #977552;
+    padding: 10px 20px; /* Space inside the taskbar */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+    /* Left: Logo */
+    .taskbar .logo {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    /* Center: Navigation Links */
+    .taskbar .nav-links {
+        display: flex;
+        justify-content: center;
+        flex-grow: 2; /* Allow navigation links to grow and remain centered */
+    }
+
+        .taskbar .nav-links a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+
+            .taskbar .nav-links a:hover {
+                text-decoration: underline;
+            }
+
+    /* Right: Account Section */
+    .taskbar .account {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        justify-content: center;
+        min-width: 50px; /* Adjust to fit the profile picture */
+        flex-shrink: 0; /* Prevent shrinking */
+        margin-left: auto; /* Keeps the account section aligned to the right */
+    }
+
+    /* Account Image */
+    /* Taskbar Account Image Styling */
+    .taskbar .account-image {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden; /* Ensures the image fits within the circle */
+        margin-bottom: 5px;
+    }
+
+        .taskbar .account-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Scales the image to cover the circle without stretching */
+        }
+
+
+    /* Account Link */
+    .taskbar .account a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px; /* Adjust font size if needed */
+        white-space: nowrap;
+    }
+
+        .taskbar .account a:hover {
+            text-decoration: underline;
+        }
+
+.account-image {
+    width: 300px; /* Ajusta el tamaño según tus necesidades */
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+    .account-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
+    }
+
+/* Main Content Rectangle */
+.content-container {
+    background-color: #977552; /* background for the content area */
+    margin: 80px auto; /* Leave space for the fixed taskbar */
+    width: 90%; /* Adjust the width of the content area */
+    max-width: 1200px; /* Optional: Limit max width */
+    padding: 20px;
+    border-radius: 10px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for effect */
+    height: calc(100vh - 60px); /* Make it full screen minus taskbar height */
+    overflow: auto; /* Allow scrolling if content overflows */
+}
+
+/* Page Background */
+body {
+    background-image: url("/static/images/background.jpeg");
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    /* Adjust taskbar padding and link spacing for smaller screens */
+    .taskbar {
+        padding: 10px;
+    }
+
+        /* Center: Navigation Links */
+        .taskbar .nav-links a {
+            margin: 0 8px; /* Reduce margin between links */
+            font-size: 14px; /* Adjust font size for better fit */
+        }
+
+        /* Right: Account Section */
+        .taskbar .account {
+            min-width: auto; /* Allow shrinking for small screens */
+        }
+
+        .taskbar .account-image {
+            width: 24px; /* Smaller profile image */
+            height: 24px;
+            margin-bottom: 3px; /* Adjust spacing */
+        }
+
+        .taskbar .account a {
+            font-size: 12px; /* Smaller font for ACCOUNT */
+        }
+}
